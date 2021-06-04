@@ -19,11 +19,11 @@ while select_num != Numeric || select_num > 2
     new_file_name = gets.to_s.chomp
     puts "日付を記入 [例：2021/01/01 または 1月1日(金曜日) ] :"
     note_type_date = gets.to_s.chomp
-    puts "内容を記入 (※ ENTER を押すと内容が保存されます。) :"
-    note_type_contents = gets.to_s.chomp
+    puts "内容を記入 (※ 改行して Ctrl + D を押すと内容が保存されます。) :"
+    note_type_contents = readlines
     
     header = ["日付","内容"]
-    data = [["#{note_type_date}","#{note_type_contents}"]]
+    data = ["#{note_type_date}","#{note_type_contents}"]
 
     CSV.open("#{new_file_name}.csv","w") do |csv|
       csv << header
@@ -51,8 +51,8 @@ while select_num != Numeric || select_num > 2
 
     puts "日付を記入 [例：2021/01/01 または 1月1日(金曜日) ] :"
     note_type_date = gets.to_s.chomp
-    puts "内容を記入 (※ ENTER を押すと内容が保存されます。) :"
-    note_type_contents = gets.to_s.chomp
+    puts "内容を記入 (※ 改行して Ctrl + D を押すと内容が保存されます。) :"
+    note_type_contents = readlines
     
     # 上で指定したファイル名からファイルを取得し、上で取得した内容をファイル内に追記
     test = CSV.open("#{edit_file_name}.csv",'a')
